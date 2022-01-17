@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+    <head></head>
+    <body>
+        <style>
+            .a {
+                border: 1px solid red;
+                position: relative;
+                height: 30px;
+                margin-top: 400px;
+            }
+
+            .a input {
+                width: 100%;
+                height: 100%;
+            }
+
+            .a .sub {
+                width: 300px;
+                border: 1px solid green;
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 100%;
+            }
+
+            .a .sub.open {
+                display: block;
+            }
+
+
+        </style>
+
+        <div class="a" tabindex="1">
+            <input type="text" >
+            <div class="sub">
+                <ul>
+                    <li>Sub Item 1</li>
+                    <li>Sub Item 2</li>
+                    <li>Sub Item 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+
+            const wrapper = document.querySelector('.a');
+            const input = document.querySelector('.a input');
+            const sub = document.querySelector('.a .sub');
+
+            if( input ) {
+
+                input.addEventListener( 'click', function (){
+                    if( sub ) {
+                        if( sub.classList.contains('open') ){
+                            sub.classList.remove('open');
+                        }else {
+                            sub.classList.add('open');
+                        }
+                    }
+                });
+
+                input.addEventListener('blur', function(){
+                    if( sub) {
+                        sub.classList.remove('open');
+                    }
+                })
+            }
+
+
+        </script>
+
+    </body>
+</html>
